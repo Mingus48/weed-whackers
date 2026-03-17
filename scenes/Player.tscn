@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bi0vlbweufppj"]
 
 [ext_resource type="Texture2D" uid="uid://upm7bh5sx8ur" path="res://assets/character-pack-full_version/sprite_split/character_1/character_1_frame16x20.png" id="1_p0vlq"]
+[ext_resource type="Script" uid="uid://ln3clqr2fvbe" path="res://scenes/Player.cs" id="1_v6fml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
 atlas = ExtResource("1_p0vlq")
@@ -137,12 +138,13 @@ animations = [{
 radius = 4.0
 height = 12.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1623943841]
+[node name="Player" type="CharacterBody2D" unique_id=1623943841]
+script = ExtResource("1_v6fml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1709985434]
 sprite_frames = SubResource("SpriteFrames_70d11")
 animation = &"idle"
-frame_progress = 0.85913897
+frame_progress = 0.8566265
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2014220310]
 position = Vector2(0, 4)

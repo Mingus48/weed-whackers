@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://upm7bh5sx8ur" path="res://assets/character-pack-full_version/sprite_split/character_1/character_1_frame16x20.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://ln3clqr2fvbe" path="res://scenes/Player.cs" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://dgcppgpgugft6" path="res://icon.svg" id="3_3li8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
 atlas = ExtResource("1_p0vlq")
@@ -149,3 +150,7 @@ frame_progress = 0.8566265
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2014220310]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_p7iby")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=70464023]
+position = Vector2(-3, 9)
+texture = ExtResource("3_3li8b")

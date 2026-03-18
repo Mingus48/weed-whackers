@@ -15,6 +15,10 @@ run/main_scene="uid://bi0vlbweufppj"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/scale=5.0
+
 [dotnet]
 
 project/assembly_name="Weed Whackers"

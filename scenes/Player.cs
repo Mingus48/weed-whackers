@@ -10,6 +10,7 @@ public partial class Player : CharacterBody2D
 	private int maxSpeed = 75;
 	private float acceleration = .4f;
 	private float friction = .2f;
+	private bool isRunning;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -22,12 +23,15 @@ public partial class Player : CharacterBody2D
 			//Friction
 			Velocity = Velocity.Lerp(Vector2.Zero, friction);
 			//Idle anim
+			isRunning = false;
 			//anim.Play("idle");
 		}else{
 			//Acceleration
 			Velocity = Velocity.Lerp(axisPowers * maxSpeed, acceleration);
-			//animTree.Set("parameters/Idle Run/Run/blend_position", axisPowers);
+			animTree.Set("parameters/Idle Run/Run/blend_position", axisPowers);
 			//Move anim
+			isRunning = true;
+			/*
 			if(axisPowers.X != 0){
 				if(axisPowers.X > 0){
 					anim.Play("runRight");
@@ -39,9 +43,10 @@ public partial class Player : CharacterBody2D
 			}else{
 				anim.Play("runUp");
 			}
+			*/
 		}
-		GD.Print(Velocity);
-		//GD.Print(Position);
+		GD.Print("V: " + Velocity);
+		GD.Print("P: " + Position);
 		MoveAndSlide();
 	}
 }

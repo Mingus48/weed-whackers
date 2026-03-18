@@ -24,29 +24,16 @@ public partial class Player : CharacterBody2D
 			Velocity = Velocity.Lerp(Vector2.Zero, friction);
 			//Idle anim
 			isRunning = false;
-			//anim.Play("idle");
 		}else{
 			//Acceleration
 			Velocity = Velocity.Lerp(axisPowers * maxSpeed, acceleration);
-			animTree.Set("parameters/Idle Run/Run/blend_position", axisPowers);
+			animTree.Set("parameters/IdleRun/RunSpace/blend_position", axisPowers);
+			GD.Print(animTree.Get("parameters/Idle Run/Run/blend_position"));
 			//Move anim
 			isRunning = true;
-			/*
-			if(axisPowers.X != 0){
-				if(axisPowers.X > 0){
-					anim.Play("runRight");
-				}else{
-					anim.Play("runLeft");
-				}
-			}else if(axisPowers.Y > 0){
-				anim.Play("runDown");
-			}else{
-				anim.Play("runUp");
-			}
-			*/
 		}
-		GD.Print("V: " + Velocity);
-		GD.Print("P: " + Position);
+		//GD.Print("V: " + Velocity);
+		//GD.Print("P: " + Position);
 		MoveAndSlide();
 	}
 }

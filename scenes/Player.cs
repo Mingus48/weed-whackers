@@ -28,12 +28,9 @@ public partial class Player : CharacterBody2D
 			//Acceleration
 			Velocity = Velocity.Lerp(axisPowers * maxSpeed, acceleration);
 			animTree.Set("parameters/IdleRun/RunSpace/blend_position", axisPowers);
-			GD.Print(animTree.Get("parameters/Idle Run/Run/blend_position"));
 			//Move anim
 			isRunning = true;
 		}
-		//GD.Print("V: " + Velocity);
-		//GD.Print("P: " + Position);
 		MoveAndSlide();
 	}
 }

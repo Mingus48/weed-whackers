@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Weed Whackers"
-run/main_scene="uid://bi0vlbweufppj"
+run/main_scene="uid://dsa0uo33h6wen"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 

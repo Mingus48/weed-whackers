@@ -1,8 +1,9 @@
-[gd_scene format=4 uid="uid://b5hkeeuyp0skd"]
+[gd_scene format=4 uid="uid://dsa0uo33h6wen"]
 
 [ext_resource type="Texture2D" uid="uid://dkh1te1cgoba5" path="res://assets/Art/Ground Tileset/Tileset_Ground.png" id="1_oxt7m"]
 [ext_resource type="Texture2D" uid="uid://38gbdw783hqg" path="res://assets/Art/Ground Tileset/Tileset_Road.png" id="2_xbyel"]
 [ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="3_xbyel"]
+[ext_resource type="PackedScene" uid="uid://bi0vlbweufppj" path="res://scenes/Player.tscn" id="4_764b5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xbyel"]
 texture = ExtResource("1_oxt7m")
@@ -929,3 +930,6 @@ tile_set = SubResource("TileSet_a47ui")
 [node name="Plants" type="TileMapLayer" parent="." unique_id=1973664835]
 tile_map_data = PackedByteArray("AAAPAAQAAAAFAAAAAAAQAAQAAAAEAAAAAAARAAQAAAADAAAAAAASAAQAAAACAAAAAAATAAQAAAABAAAAAAAUAAQAAAABAAAAAAAVAAQAAAABAAAAAAAWAAQAAAABAAAAAAAPAAUAAAAFAAAAAAAPAAYAAAAFAAAAAAAQAAUAAAAEAAAAAAAQAAYAAAAEAAAAAAARAAUAAAADAAAAAAARAAYAAAADAAAAAAASAAUAAAACAAAAAAASAAYAAAACAAAAAAATAAUAAAABAAAAAAATAAYAAAABAAAAAAAUAAUAAAABAAAAAAAUAAYAAAABAAAAAAAVAAUAAAABAAAAAAAVAAYAAAABAAAAAAAWAAUAAAABAAAAAAAWAAYAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_skjk8")
+
+[node name="Player" parent="." unique_id=1623943841 instance=ExtResource("4_764b5")]
+position = Vector2(152, 109)

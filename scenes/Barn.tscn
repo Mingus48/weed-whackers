@@ -951,6 +951,7 @@ tile_set = SubResource("TileSet_skjk8")
 position = Vector2(152, 109)
 
 [node name="WaterTimer" type="Timer" parent="." unique_id=577339870]
+wait_time = 10.0
 autostart = true
 ignore_time_scale = true
 

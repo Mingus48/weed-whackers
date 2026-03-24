@@ -36,7 +36,8 @@ public partial class Barn : Node2D
 		Vector2 localPos = GetGlobalMousePosition() - tileMap.Position;
 		localPos /= 16;
 		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
-			water[(int)localPos.X, (int)localPos.Y] = 350;
+			water[(int)localPos.X, (int)localPos.Y] = 30000;
+			updateWater();
 		}
 		//GD.Print(GetGlobalMousePosition());
 		//GD.Print(localPos);
@@ -52,9 +53,9 @@ public partial class Barn : Node2D
 	private void updateWater(){
 		for(int i = 0; i < water.GetLength(0); i ++){
 			for(int j = 0; j < water.GetLength(1); j ++){
-				if(water[i, j] > 200){
+				if(water[i, j] > 20000){
 					waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(8, 8));
-				}else if(water[i, j] > 100){
+				}else if(water[i, j] > 10000){
 					waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(7, 8));
 				}else{
 					waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(6, 8));

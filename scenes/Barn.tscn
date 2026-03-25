@@ -927,10 +927,10 @@ texture = ExtResource("3_xbyel")
 [sub_resource type="TileSet" id="TileSet_skjk8"]
 sources/0 = SubResource("TileSetAtlasSource_a47ui")
 
-[node name="Barn" type="Node2D" unique_id=1326974089 node_paths=PackedStringArray("player", "waterTimer", "tileMap", "waterTiles")]
+[node name="Barn" type="Node2D" unique_id=1326974089 node_paths=PackedStringArray("player", "tickTimer", "tileMap", "waterTiles")]
 script = ExtResource("1_48v6m")
 player = NodePath("Player")
-waterTimer = NodePath("WaterTimer")
+tickTimer = NodePath("TickTimer")
 tileMap = NodePath("Plants")
 waterTiles = NodePath("Farmland")
 
@@ -950,9 +950,9 @@ tile_set = SubResource("TileSet_skjk8")
 [node name="Player" parent="." unique_id=1623943841 instance=ExtResource("4_764b5")]
 position = Vector2(152, 109)
 
-[node name="WaterTimer" type="Timer" parent="." unique_id=577339870]
-wait_time = 10.0
+[node name="TickTimer" type="Timer" parent="." unique_id=577339870]
+wait_time = 2.0
 autostart = true
 ignore_time_scale = true
 
-[connection signal="timeout" from="WaterTimer" to="." method="_on_water_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

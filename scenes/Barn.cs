@@ -17,6 +17,7 @@ public partial class Barn : Node2D
 	int[,] stage = new int[8, 10];
 	int[,] water = new int[8, 10];
 	int[,] growTime = new int[8, 10];
+	int[,] bonus = new int[8, 10];
 	Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
 		{"turnip", new Vector2I(5, 0)},
 		{"tomato", new Vector2I(5, 2)}
@@ -43,7 +44,7 @@ public partial class Barn : Node2D
 		localPos /= 16;
 		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
 			water[(int)localPos.X, (int)localPos.Y] = 30000;
-			updateWaterAndPlants();
+			updateWater();
 		}
 	}
 
@@ -54,28 +55,41 @@ public partial class Barn : Node2D
 		tileMap.SetCell(cords, 0, atlasCords);
 	}
 
-	private void updateWaterAndPlants(){
+	private void updateWater(){
 		//Updates all farmland tiles to have the correct water
 		for(int i = 0; i < water.GetLength(0); i ++){
 			for(int j = 0; j < water.GetLength(1); j ++){
 				if(water[i,j] != 0){
 					if(water[i, j] > 20000){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(8, 8));
+						if(bonus[i, j] != 2){
+							bonus[i, j] = 2;
+						}
 					}else if(water[i, j] > 10000){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(7, 8));
+						if(bonus[i, j] != 1){
+							bonus[i, j] = 1;
+						}
 					}else{
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(6, 8));
+						if(bonus[i, j] != 0){
+							bonus[i, j] = 0;
+						}
 					}
 				}
 			}
 		}
+	}
 
+	private void updatePlants(){
 		//Updates all plant tiles to be in the correct state
 		for(int i = 0; i < growTime.GetLength(0); i ++){
 			for(int j = 0; j < growTime.GetLength(1); j ++){
 				if(plants[i, j] != null){
 					Vector2I atlasCords = plantIdx[plants[i, j]];
-					atlasCords.X -= 4 - (int)(5 * ((float)growTime[i, j]/growIdx[plants[i, j]]));
+					atlasCords.X -= 4 - (int)(5 * ((growTime[i, j] - .001)/growIdx[plants[i, j]]));
+					GD.Print(atlasCords);
+					GD.Print((int)(5 * ((float)growTime[i, j]/growIdx[plants[i, j]])));
 					tileMap.SetCell(new Vector2I(i, j), 0, atlasCords);
 				}
 			}
@@ -99,13 +113,14 @@ public partial class Barn : Node2D
 		for(int i = 0; i < growTime.GetLength(0); i ++){
 			for(int j = 0; j < growTime.GetLength(1); j ++){
 				if(growTime[i, j] != 0){
-					growTime[i, j] -= (int)tickTimer.WaitTime * 10;
+					growTime[i, j] -= (int)tickTimer.WaitTime * 10 * bonus[i, j];
 					if(growTime[i, j] < 0){
 						growTime[i, j] = 0;
 					}
 				}
 			}
 		}
-		updateWaterAndPlants();
+		updateWater();
+		updatePlants();
 	}
 }

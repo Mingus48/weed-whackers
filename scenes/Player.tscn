@@ -219,6 +219,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_6e537")
 blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_p07f3")
 blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3li8b"]
 animation = &"Left"
@@ -451,7 +452,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle"]
+"values": [&"idleDown"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -545,7 +546,7 @@ animTree = NodePath("AnimationTree")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1709985434]
 sprite_frames = SubResource("SpriteFrames_70d11")
-animation = &"idle"
+animation = &"idleDown"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=481091283]
 root_node = NodePath(".")

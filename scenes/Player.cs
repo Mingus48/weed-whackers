@@ -24,6 +24,7 @@ public partial class Player : CharacterBody2D
 			Velocity = Velocity.Lerp(Vector2.Zero, friction);
 			//Idle anim
 			isRunning = false;
+			animTree.Set("parameters/IdleRun/IdleSpace/blend_position", axisPowers);
 		}else{
 			//Acceleration
 			Velocity = Velocity.Lerp(axisPowers * maxSpeed, acceleration);

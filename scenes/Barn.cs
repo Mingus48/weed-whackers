@@ -26,6 +26,10 @@ public partial class Barn : Node2D
 		{"turnip", 100},
 		{"tomato", 200}
 	};
+	Dictionary<string, List<string>> bonusIdx = new Dictionary<string, List<string>>(){
+		{"turnip", new List<string>{"tomato"}},
+		{"tomato", new List<string>{"turnip"}}
+	};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -49,9 +53,12 @@ public partial class Barn : Node2D
 	}
 
 	private void addSeed(string plant, Vector2I cords){
+		//Adds plant and grow times to the 2d array
 		plants[cords.X, cords.Y] = plant;
 		growTime[cords.X, cords.Y] = growIdx[plant];
 		Vector2I atlasCords = plantIdx[plant];
+		//Handles bonuses
+		//Puts the tile on the map
 		tileMap.SetCell(cords, 0, atlasCords);
 	}
 

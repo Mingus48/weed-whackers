@@ -18,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Barn.cs",
-              "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
-              "RelativeDocumentMoniker": "scenes\\Barn.cs",
-              "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
-              "RelativeToolTip": "scenes\\Barn.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAABBwFkAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T16:24:24.702Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -41,9 +28,22 @@
               "RelativeDocumentMoniker": "scenes\\Player.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Player.cs",
               "RelativeToolTip": "scenes\\Player.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T15:29:53.479Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Barn.cs",
+              "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
+              "RelativeDocumentMoniker": "scenes\\Barn.cs",
+              "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
+              "RelativeToolTip": "scenes\\Barn.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAFkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-22T16:24:24.702Z",
               "EditorCaption": ""
             }
           ]

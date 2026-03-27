@@ -956,8 +956,7 @@ tile_set = SubResource("TileSet_764b5")
 position = Vector2(240, 64)
 tile_set = SubResource("TileSet_skjk8")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=180773175]
-tile_map_data = PackedByteArray("AAAQAAUAAAAAAAAAAAATAAgAAAABAAAAAAA=")
+[node name="BonusUI" type="TileMapLayer" parent="." unique_id=180773175]
 tile_set = SubResource("TileSet_1qrwq")
 
 [node name="Player" parent="." unique_id=1623943841 instance=ExtResource("4_764b5")]

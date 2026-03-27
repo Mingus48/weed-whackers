@@ -17,16 +17,17 @@ public partial class Barn : Node2D
 	int[,] stage = new int[8, 10];
 	int[,] water = new int[8, 10];
 	int[,] growTime = new int[8, 10];
-	int[,] bonus = new int[8, 10];
-	Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
+	float[,] bonus = new float[8, 10];
+	public Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
 		{"turnip", new Vector2I(5, 0)},
 		{"tomato", new Vector2I(5, 2)}
 	};
-	Dictionary<string, int> growIdx = new Dictionary<string, int>(){
-		{"turnip", 100},
-		{"tomato", 200}
+	private Dictionary<string, int> growIdx = new Dictionary<string, int>(){
+		{"turnip", 1000},
+		{"tomato", 2000}
 	};
-	Dictionary<string, List<string>> bonusIdx = new Dictionary<string, List<string>>(){
+	//For the bonus system
+	private Dictionary<string, List<string>> bonusIdx = new Dictionary<string, List<string>>(){
 		{"turnip", new List<string>{"tomato"}},
 		{"tomato", new List<string>{"turnip"}}
 	};
@@ -39,6 +40,7 @@ public partial class Barn : Node2D
 		cam.LimitTop = 0;
 		cam.LimitBottom = 272;
 		addSeed("turnip", new Vector2I(0, 0));
+		addSeed("tomato", new Vector2I(1, 0));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,12 +54,16 @@ public partial class Barn : Node2D
 		}
 	}
 
-	private void addSeed(string plant, Vector2I cords){
+	public void addSeed(string plant, Vector2I cords){
+		if(cords.X < 0 || cords.X >= plants.GetLength(0) || cords.Y < 0 || cords.Y >= plants.GetLength(1)){
+			return;
+		}
 		//Adds plant and grow times to the 2d array
 		plants[cords.X, cords.Y] = plant;
 		growTime[cords.X, cords.Y] = growIdx[plant];
 		Vector2I atlasCords = plantIdx[plant];
 		//Handles bonuses
+		//NEEDS TO BE IMPLEMENTED
 		//Puts the tile on the map
 		tileMap.SetCell(cords, 0, atlasCords);
 	}
@@ -95,8 +101,6 @@ public partial class Barn : Node2D
 				if(plants[i, j] != null){
 					Vector2I atlasCords = plantIdx[plants[i, j]];
 					atlasCords.X -= 4 - (int)(5 * ((growTime[i, j] - .001)/growIdx[plants[i, j]]));
-					GD.Print(atlasCords);
-					GD.Print((int)(5 * ((float)growTime[i, j]/growIdx[plants[i, j]])));
 					tileMap.SetCell(new Vector2I(i, j), 0, atlasCords);
 				}
 			}
@@ -105,7 +109,7 @@ public partial class Barn : Node2D
 	}
 
 	private void _on_tick_timer_timeout(){
-		GD.Print("update water");
+		//GD.Print("update water");
 		for(int i = 0; i < water.GetLength(0); i ++){
 			for(int j = 0; j < water.GetLength(1); j ++){
 				if(water[i, j] != 0){
@@ -120,7 +124,7 @@ public partial class Barn : Node2D
 		for(int i = 0; i < growTime.GetLength(0); i ++){
 			for(int j = 0; j < growTime.GetLength(1); j ++){
 				if(growTime[i, j] != 0){
-					growTime[i, j] -= (int)tickTimer.WaitTime * 10 * bonus[i, j];
+					growTime[i, j] -= (int)(tickTimer.WaitTime * 100 * bonus[i, j]);
 					if(growTime[i, j] < 0){
 						growTime[i, j] = 0;
 					}

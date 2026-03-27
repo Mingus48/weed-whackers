@@ -40,7 +40,7 @@ public partial class Barn : Node2D
 		cam.LimitTop = 0;
 		cam.LimitBottom = 272;
 		addSeed("turnip", new Vector2I(0, 0));
-		addSeed("tomato", new Vector2I(1, 0));
+		addSeed("tomato", new Vector2I(17, 0));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,8 +54,16 @@ public partial class Barn : Node2D
 		}
 	}
 
-	public void addSeed(string plant, Vector2I cords){
+	public void addSeed(string plant, Vector2 globalCords){
+		Vector2I cords = tileMap.LocalToMap(tileMap.ToLocal(globalCords));
+		GD.Print("Planting started");
+		GD.Print(cords);
 		if(cords.X < 0 || cords.X >= plants.GetLength(0) || cords.Y < 0 || cords.Y >= plants.GetLength(1)){
+			GD.Print("Not in bounds");
+			return;
+		}
+		if(plants[cords.X, cords.Y] != null){
+			GD.Print("Space Taken!");
 			return;
 		}
 		//Adds plant and grow times to the 2d array
@@ -105,7 +113,7 @@ public partial class Barn : Node2D
 				}
 			}
 		}
-		GD.Print(growTime[0, 0]);
+		//GD.Print(growTime[0, 0]);
 	}
 
 	private void _on_tick_timer_timeout(){

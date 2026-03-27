@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
 	private Barn barnScript;
 	private int mode = 0;
 	private string currentPlant = "turnip";
+	private Vector2I lastSeedPos = Vector2I.Zero;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -23,19 +24,25 @@ public partial class Player : CharacterBody2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta){
-		if(Input.IsKeyPressed(Key.Key1)){
+		if(Input.IsActionPressed("farmMode")){
 			mode = 1;
 		}
 
 		//Handles planting
 		if(mode == 1){
 			Vector2 offset = -1 * (Position % 16);
+			offset += new Vector2(16, 16);
 			seedsLayer.Position = offset;
-			seedsLayer.Position += new Vector2(16, 16);
-			Vector2I coords = (Vector2I)((ToLocal(GetGlobalMousePosition()) + offset) / 16);
-			seedsLayer.SetCell(coords, 0, barnScript.plantIdx[currentPlant]);
-			if(Input.IsMouseButtonPressed(MouseButton.Left)){
-				//barnScript.addSeed(currentPlant, GetGlobalMousePosition());
+			Vector2 mousePos = seedsLayer.ToLocal(GetGlobalMousePosition());
+			Vector2I coords = seedsLayer.LocalToMap(mousePos);
+			if(coords != lastSeedPos){
+				seedsLayer.EraseCell(lastSeedPos);
+				seedsLayer.SetCell(coords, 0, barnScript.plantIdx[currentPlant]);
+				lastSeedPos = coords;
+			}
+			if(Input.IsActionJustPressed("leftClick")){
+				GD.Print("hi");
+				barnScript.addSeed(currentPlant, GetGlobalMousePosition());
 			}
 		}
 

@@ -48,8 +48,15 @@ public partial class Barn : Node2D
 		cam.LimitRight = 416;
 		cam.LimitTop = 0;
 		cam.LimitBottom = 272;
+		bonusMap.Clear();
+		for(int i = 0; i < bonus.GetLength(0); i ++){
+			for(int j = 0; j < bonus.GetLength(1); j ++){
+				bonus[i, j] = 1;
+			}
+		}
 		addSeed("turnip", new Vector2I(15 * 16, 64));
 		addSeed("tomato", new Vector2I(16 * 16, 64));
+		addSeed("tomato", new Vector2I(16 * 16, 80));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,8 +65,8 @@ public partial class Barn : Node2D
 		Vector2 localPos = GetGlobalMousePosition() - tileMap.Position;
 		localPos /= 16;
 		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
-			//water[(int)localPos.X, (int)localPos.Y] = 30000;
-			//updateWater();
+			water[(int)localPos.X, (int)localPos.Y] = 30000;
+			updateWater();
 		}
 	}
 
@@ -80,9 +87,39 @@ public partial class Barn : Node2D
 		growTime[cords.X, cords.Y] = growIdx[plant];
 		Vector2I atlasCords = plantIdx[plant];
 		//Handles bonuses
-		//NEEDS TO BE IMPLEMENTED
+		int boosted = 0;
+		if(cords.X - 1 >= 0){
+			boosted += plantBonuses(cords.X - 1, cords.Y, plant);
+		}
+		if(cords.Y - 1 >= 0){
+			boosted += plantBonuses(cords.X, cords.Y - 1, plant);
+		}
+		if(cords.X + 1 < plants.GetLength(0)){
+			boosted += plantBonuses(cords.X + 1, cords.Y, plant);
+		}
+		if(cords.Y + 1 < plants.GetLength(1)){
+			boosted += plantBonuses(cords.X , cords.Y + 1, plant);
+		}
+		bonus[cords.X, cords.Y] += boosted / 4f;
 		//Puts the tile on the map
 		tileMap.SetCell(cords, 0, atlasCords);
+	}
+
+	private int plantBonuses(int x, int y, string plant){
+		if(plants[x, y] == null){
+			return 0;
+		}
+		if(bonusIdx[plants[x, y]].Contains(plant)){
+			bonus[x, y] += .25f;
+		}else if(bonusIdx["-" + plants[x, y]].Contains(plant)){
+			bonus[x, y] -= .25f;
+		}
+		if(bonusIdx[plant].Contains(plants[x, y])){
+			return 1;
+		}else if(bonusIdx["-" + plant].Contains(plants[x, y])){
+			return -1;
+		}
+		return 0;
 	}
 
 	private void updateWater(){
@@ -92,19 +129,10 @@ public partial class Barn : Node2D
 				if(water[i,j] != 0){
 					if(water[i, j] > 20000){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(8, 8));
-						if(bonus[i, j] != 2){
-							bonus[i, j] = 2;
-						}
 					}else if(water[i, j] > 10000){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(7, 8));
-						if(bonus[i, j] != 1){
-							bonus[i, j] = 1;
-						}
 					}else{
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(6, 8));
-						if(bonus[i, j] != 0){
-							bonus[i, j] = 0;
-						}
 					}
 				}
 			}
@@ -122,7 +150,7 @@ public partial class Barn : Node2D
 				}
 			}
 		}
-		//GD.Print(growTime[0, 0]);
+		GD.Print(growTime[1, 0]);
 	}
 
 	public void showBonuses(string plant, Vector2 globalCords){
@@ -187,7 +215,7 @@ public partial class Barn : Node2D
 
 		for(int i = 0; i < growTime.GetLength(0); i ++){
 			for(int j = 0; j < growTime.GetLength(1); j ++){
-				if(growTime[i, j] != 0){
+				if(growTime[i, j] != 0 && water[i, j] != 0){
 					growTime[i, j] -= (int)(tickTimer.WaitTime * 100 * bonus[i, j]);
 					if(growTime[i, j] < 0){
 						growTime[i, j] = 0;

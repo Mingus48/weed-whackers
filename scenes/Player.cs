@@ -25,7 +25,7 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta){
 		if(Input.IsActionPressed("farmMode")){
-			mode = 1;
+			mode = 1 - mode;
 		}
 
 		//Handles planting
@@ -39,6 +39,7 @@ public partial class Player : CharacterBody2D
 				seedsLayer.EraseCell(lastSeedPos);
 				seedsLayer.SetCell(coords, 0, barnScript.plantIdx[currentPlant]);
 				lastSeedPos = coords;
+				barnScript.showBonuses(currentPlant, GetGlobalMousePosition());
 			}
 			if(Input.IsActionJustPressed("leftClick")){
 				GD.Print("hi");

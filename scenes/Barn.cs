@@ -16,7 +16,6 @@ public partial class Barn : Node2D
 	private TileMapLayer bonusMap;
 
 	private string[,] plants = new string[8, 10];
-	private int[,] stage = new int[8, 10];
 	private int[,] water = new int[8, 10];
 	private int[,] growTime = new int[8, 10];
 	private float[,] bonus = new float[8, 10];
@@ -63,12 +62,40 @@ public partial class Barn : Node2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
+		harvestPlant();
 		//Current watering script(will shift to player)
 		Vector2 localPos = GetGlobalMousePosition() - tileMap.Position;
 		localPos /= 16;
 		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
 			water[(int)localPos.X, (int)localPos.Y] = 30000;
 			updateWater();
+		}
+	}
+
+	private void harvestPlant(){
+		if(Input.IsMouseButtonPressed(MouseButton.Left)){
+			Vector2I mousePos = tileMap.LocalToMap(tileMap.ToLocal(GetGlobalMousePosition()));
+			if(mousePos.X >= 0 && mousePos.Y >= 0 && mousePos.X < plants.GetLength(0) && mousePos.Y < plants.GetLength(1)){
+				if(plants[mousePos.X, mousePos.Y] != null && growTime[mousePos.X, mousePos.Y] == 0){
+					string plant = plants[mousePos.X, mousePos.Y];
+					plants[mousePos.X, mousePos.Y] = null;
+					bonus[mousePos.X, mousePos.Y] = 1;
+					if(mousePos.X - 1 >= 0){
+						reverseBonus(mousePos.X - 1, mousePos.Y, plant);
+					}
+					if(mousePos.Y - 1 >= 0){
+						reverseBonus(mousePos.X, mousePos.Y - 1, plant);
+					}
+					if(mousePos.X + 1 < plants.GetLength(0)){
+						reverseBonus(mousePos.X + 1, mousePos.Y, plant);
+					}
+					if(mousePos.Y + 1 < plants.GetLength(1)){
+						reverseBonus(mousePos.X , mousePos.Y + 1, plant);
+					}
+					tileMap.EraseCell(mousePos);
+					spawnFruit(plant, GetLocalMousePosition());
+				}
+			}
 		}
 	}
 
@@ -122,6 +149,17 @@ public partial class Barn : Node2D
 			return -1;
 		}
 		return 0;
+	}
+
+	private void reverseBonus(int x, int y, string plant){
+		if(plants[x, y] == null){
+			return;
+		}
+		if(bonusIdx[plants[x, y]].Contains(plant)){
+			bonus[x, y] -= .25f;
+		}else if(bonusIdx["-" + plants[x, y]].Contains(plant)){
+			bonus[x, y] += .25f;
+		}
 	}
 
 	private void updateWater(){

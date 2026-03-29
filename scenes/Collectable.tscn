@@ -201,6 +201,7 @@ pic = NodePath("TileMapLayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1372630389]
 shape = SubResource("CapsuleShape2D_qxqiu")
+disabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=536976545]
 position = Vector2(-8, -8)

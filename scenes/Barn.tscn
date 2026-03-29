@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="3_xbyel"]
 [ext_resource type="PackedScene" uid="uid://bi0vlbweufppj" path="res://scenes/Player.tscn" id="4_764b5"]
 [ext_resource type="Texture2D" uid="uid://errwumscu71" path="res://assets/Bonus.png" id="5_a47ui"]
-[ext_resource type="PackedScene" uid="uid://ce0ddwpqdrq03" path="res://scenes/Collectable.tscn" id="7_skjk8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_764b5"]
 texture = ExtResource("1_oxt7m")
@@ -968,8 +967,5 @@ position = Vector2(152, 109)
 [node name="TickTimer" type="Timer" parent="." unique_id=577339870]
 autostart = true
 ignore_time_scale = true
-
-[node name="Collectable" parent="." unique_id=836172182 instance=ExtResource("7_skjk8")]
-position = Vector2(186, 46)
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

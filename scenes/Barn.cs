@@ -16,10 +16,12 @@ public partial class Barn : Node2D
 	private TileMapLayer bonusMap;
 
 	private string[,] plants = new string[8, 10];
-	private int[,] water = new int[8, 10];
+	private float[,] water = new float[8, 10];
 	private int[,] growTime = new int[8, 10];
 	private float[,] bonus = new float[8, 10];
 	private PackedScene fruit;
+	//How long it will take for a fully watered plant to become dry * 100
+	private int maxWater = 30000;
 	//The atlas coords at where you can find the plant
 	public Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
 		{"turnip", new Vector2I(5, 0)},
@@ -63,13 +65,13 @@ public partial class Barn : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
 		harvestPlant();
-		//Current watering script(will shift to player)
+		/*Current watering script(will shift to player)
 		Vector2 localPos = GetGlobalMousePosition() - tileMap.Position;
 		localPos /= 16;
 		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
-			water[(int)localPos.X, (int)localPos.Y] = 30000;
+			water[(int)localPos.X, (int)localPos.Y] = maxWater;
 			updateWater();
-		}
+		}*/
 	}
 
 	private void harvestPlant(){
@@ -130,6 +132,28 @@ public partial class Barn : Node2D
 		tileMap.SetCell(cords, 0, atlasCords);
 	}
 
+	public void waterSpot(Vector2 globalCords, double deltaForce){
+		Vector2I cords = waterTiles.LocalToMap(waterTiles.ToLocal(globalCords));
+		if(cords.X < 0 || cords.X >= plants.GetLength(0) || cords.Y < 0 || cords.Y >= plants.GetLength(1)){
+			return;
+		}
+		water[cords.X, cords.Y] += maxWater/10;
+		//Amount of seconds it takes to fill ^
+		if(cords.X - 1 >= 0){
+			water[cords.X - 1, cords.Y] += maxWater/10 * (float)deltaForce;
+		}
+		if(cords.Y - 1 >= 0){
+			water[cords.X, cords.Y - 1] += maxWater/20 * (float)deltaForce;
+		}
+		if(cords.X + 1 < water.GetLength(0)){
+			water[cords.X + 1, cords.Y] += maxWater/20 * (float)deltaForce;
+		}
+		if(cords.Y + 1 < water.GetLength(1)){
+			water[cords.X, cords.Y + 1] += maxWater/20 * (float)deltaForce;
+		}
+		updateWater();
+	}
+
 	private int plantBonuses(int x, int y, string plant){
 		if(plants[x, y] == null){
 			return 0;
@@ -163,9 +187,9 @@ public partial class Barn : Node2D
 		for(int i = 0; i < water.GetLength(0); i ++){
 			for(int j = 0; j < water.GetLength(1); j ++){
 				if(water[i,j] != 0){
-					if(water[i, j] > 20000){
+					if(water[i, j] > maxWater/2f){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(8, 8));
-					}else if(water[i, j] > 10000){
+					}else if(water[i, j] > 0){
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(7, 8));
 					}else{
 						waterTiles.SetCell(new Vector2I(i, j), 0, new Vector2I(6, 8));

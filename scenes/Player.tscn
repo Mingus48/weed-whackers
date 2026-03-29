@@ -84,6 +84,38 @@ region = Rect2(16, 60, 16, 20)
 atlas = ExtResource("1_p0vlq")
 region = Rect2(32, 60, 16, 20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv3ic"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(64, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8lor"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(80, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e537"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(64, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07f3"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(80, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viqgg"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(64, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgkxt"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(80, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsi7p"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(64, 60, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jpwa"]
+atlas = ExtResource("1_p0vlq")
+region = Rect2(80, 60, 16, 20)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_70d11"]
 animations = [{
 "frames": [{
@@ -197,6 +229,50 @@ animations = [{
 "loop": true,
 "name": &"runUp",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv3ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8lor")
+}],
+"loop": true,
+"name": &"waterDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e537")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p07f3")
+}],
+"loop": true,
+"name": &"waterLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viqgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgkxt")
+}],
+"loop": true,
+"name": &"waterRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsi7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jpwa")
+}],
+"loop": true,
+"name": &"waterUp",
+"speed": 5.0
 }]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6fml"]
@@ -245,6 +321,29 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_qu4a1")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6eyey"]
+animation = &"WaterRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3wef"]
+animation = &"WaterLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4126"]
+animation = &"WaterDown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lkdrv"]
+animation = &"WaterUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_p7iby"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6eyey")
+blend_point_0/pos = Vector2(1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_d3wef")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_o4126")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_lkdrv")
+blend_point_3/pos = Vector2(0, -1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d3wef"]
 advance_mode = 2
 advance_expression = "isRunning"
@@ -256,17 +355,35 @@ advance_expression = "!isRunning"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lkdrv"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0rnld"]
+advance_mode = 2
+advance_expression = "isWatering && !isRunning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_srp4u"]
+advance_mode = 2
+advance_expression = "!isRunning && isWatering"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jfpux"]
+advance_mode = 2
+advance_expression = "!isWatering && !isRunning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_61ith"]
+advance_mode = 2
+advance_expression = "isRunning"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_bruh7"]
 states/IdleSpace/node = SubResource("AnimationNodeBlendSpace2D_6eyey")
 states/IdleSpace/position = Vector2(341.11115, 58.666668)
 states/RunSpace/node = SubResource("AnimationNodeBlendSpace2D_cw2d6")
 states/RunSpace/position = Vector2(341.3333, 182)
-transitions = ["IdleSpace", "RunSpace", SubResource("AnimationNodeStateMachineTransition_d3wef"), "RunSpace", "IdleSpace", SubResource("AnimationNodeStateMachineTransition_o4126"), "Start", "IdleSpace", SubResource("AnimationNodeStateMachineTransition_lkdrv")]
+states/WaterSpace/node = SubResource("AnimationNodeBlendSpace2D_p7iby")
+states/WaterSpace/position = Vector2(526, 122.666664)
+transitions = ["IdleSpace", "RunSpace", SubResource("AnimationNodeStateMachineTransition_d3wef"), "RunSpace", "IdleSpace", SubResource("AnimationNodeStateMachineTransition_o4126"), "Start", "IdleSpace", SubResource("AnimationNodeStateMachineTransition_lkdrv"), "IdleSpace", "WaterSpace", SubResource("AnimationNodeStateMachineTransition_0rnld"), "RunSpace", "WaterSpace", SubResource("AnimationNodeStateMachineTransition_srp4u"), "WaterSpace", "IdleSpace", SubResource("AnimationNodeStateMachineTransition_jfpux"), "WaterSpace", "RunSpace", SubResource("AnimationNodeStateMachineTransition_61ith")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6eyey"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d3wef"]
-graph_offset = Vector2(-228.42896, 101.06962)
+graph_offset = Vector2(-236, 142)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6eyey")
 nodes/TimeScale/position = Vector2(93.333336, 133.33333)
 nodes/IdleRun/node = SubResource("AnimationNodeStateMachine_bruh7")
@@ -524,6 +641,118 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_ebwui"]
+resource_name = "WaterDown"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"waterDown"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_sfy4j"]
+resource_name = "WaterLeft"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"waterLeft"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_p07f3"]
+resource_name = "WaterRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"waterRight"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_viqgg"]
+resource_name = "WaterUp"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"waterUp"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_61ith"]
 _data = {
 &"Down": SubResource("Animation_o4126"),
@@ -534,7 +763,11 @@ _data = {
 &"Left": SubResource("Animation_p7iby"),
 &"RESET": SubResource("Animation_0rnld"),
 &"Right": SubResource("Animation_srp4u"),
-&"Up": SubResource("Animation_jfpux")
+&"Up": SubResource("Animation_jfpux"),
+&"WaterDown": SubResource("Animation_ebwui"),
+&"WaterLeft": SubResource("Animation_sfy4j"),
+&"WaterRight": SubResource("Animation_p07f3"),
+&"WaterUp": SubResource("Animation_viqgg")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7iby"]
@@ -684,6 +917,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 0.75
 parameters/IdleRun/IdleSpace/blend_position = Vector2(0, 0)
 parameters/IdleRun/RunSpace/blend_position = Vector2(0, 0)
+parameters/IdleRun/WaterSpace/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=228931349]
 root_node = NodePath("../AnimationTree")

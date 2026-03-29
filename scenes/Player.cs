@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 	private float acceleration = .4f;
 	private float friction = .2f;
 	private bool isRunning;
+	private bool isWatering;
 	private Vector2 lastAxis = new Vector2(0, 1);
 	private Barn barnScript;
 	private int mode = 0;
@@ -26,6 +27,14 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta){
 		if(Input.IsActionPressed("farmMode")){
 			mode = 1 - mode;
+		}
+		if(Input.IsActionJustPressed("water")){
+			GD.Print("hi");
+			if(isWatering){
+				isWatering = false;
+			}else{
+				isWatering = true;
+			}
 		}
 
 		//Handles planting
@@ -47,6 +56,11 @@ public partial class Player : CharacterBody2D
 			}
 		}
 
+		if(isWatering && !isRunning){
+			barnScript.waterSpot(new Vector2(Position.X, Position.Y + 8), delta);
+			GD.Print(delta);
+		}
+
 		//Handles movement
 		Vector2 axisPowers = Input.GetVector("left", "right", "up", "down");
 		if(axisPowers == Vector2.Zero){
@@ -54,8 +68,13 @@ public partial class Player : CharacterBody2D
 			Velocity = Velocity.Lerp(Vector2.Zero, friction);
 			//Idle anim
 			isRunning = false;
-			animTree.Set("parameters/IdleRun/IdleSpace/blend_position", lastAxis);
-			animTree.Set("parameters/TimeScale/scale", .75);
+			if(!isWatering){
+				animTree.Set("parameters/IdleRun/IdleSpace/blend_position", lastAxis);
+				animTree.Set("parameters/TimeScale/scale", .75);
+			}else{
+				animTree.Set("parameters/IdleRun/WaterSpace/blend_position", lastAxis);
+				animTree.Set("parameters/TimeScale/scale", 1.5);
+			}
 		}else{
 			//Acceleration
 			Velocity = Velocity.Lerp(axisPowers * maxSpeed, acceleration);

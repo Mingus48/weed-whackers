@@ -32,7 +32,6 @@ public partial class Collectable : RigidBody2D
 				anim.Play("delete");
 			}
 		}
-		GD.Print(LinearVelocity);
 	}
 
 	public void setTile(string plant){
@@ -52,7 +51,6 @@ public partial class Collectable : RigidBody2D
 		startingY = Position.Y;
 		Position = new Vector2(Position.X, Position.Y - 1);
 		LinearVelocity = new Vector2(tan, -1).Normalized() * 60;
-		GD.Print(LinearVelocity);
 	}
 
 	private void _on_area_2d_body_entered(Node2D body){

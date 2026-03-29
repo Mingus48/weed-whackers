@@ -34,8 +34,7 @@
               "RelativeToolTip": "scenes\\Player.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T15:29:53.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T15:29:53.479Z"
             },
             {
               "$type": "Document",
@@ -45,7 +44,7 @@
               "RelativeDocumentMoniker": "scenes\\Barn.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
               "RelativeToolTip": "scenes\\Barn.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAAAM8AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-22T16:24:24.702Z",
               "EditorCaption": ""
@@ -60,8 +59,7 @@
               "RelativeToolTip": "scenes\\Collectable.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAAABoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T21:33:54.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T21:33:54.272Z"
             }
           ]
         }

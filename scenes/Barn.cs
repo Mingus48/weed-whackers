@@ -101,14 +101,10 @@ public partial class Barn : Node2D
 
 	public void addSeed(string plant, Vector2 globalCords){
 		Vector2I cords = tileMap.LocalToMap(tileMap.ToLocal(globalCords));
-		GD.Print("Planting started");
-		GD.Print(cords);
 		if(cords.X < 0 || cords.X >= plants.GetLength(0) || cords.Y < 0 || cords.Y >= plants.GetLength(1)){
-			GD.Print("Not in bounds");
 			return;
 		}
 		if(plants[cords.X, cords.Y] != null){
-			GD.Print("Space Taken!");
 			return;
 		}
 		//Adds plant and grow times to the 2d array
@@ -186,17 +182,18 @@ public partial class Barn : Node2D
 				if(plants[i, j] != null){
 					Vector2I atlasCords = plantIdx[plants[i, j]];
 					atlasCords.X -= 4 - (int)(5 * ((growTime[i, j] - .001)/growIdx[plants[i, j]]));
+					if(atlasCords.X == 1 || atlasCords.X == 7){
+						growTime[i, j] = 0;
+					}
 					tileMap.SetCell(new Vector2I(i, j), 0, atlasCords);
 				}
 			}
 		}
-		//GD.Print(growTime[1, 0]);
 	}
 
 	public void showBonuses(string plant, Vector2 globalCords){
 		bonusMap.Clear();
 		Vector2I cords = bonusMap.LocalToMap(bonusMap.ToLocal(globalCords));
-		GD.Print(cords);
 		if(cords.X < 0 || cords.X >= plants.GetLength(0) || cords.Y < 0 || cords.Y >= plants.GetLength(1)){
 			return;
 		}
@@ -248,7 +245,6 @@ public partial class Barn : Node2D
 	}
 
 	private void _on_tick_timer_timeout(){
-		//GD.Print("update water");
 		for(int i = 0; i < water.GetLength(0); i ++){
 			for(int j = 0; j < water.GetLength(1); j ++){
 				if(water[i, j] != 0){

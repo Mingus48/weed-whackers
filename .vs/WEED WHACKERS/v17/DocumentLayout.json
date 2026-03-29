@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\barn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\collectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\collectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,13 +26,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Player.cs",
               "RelativeDocumentMoniker": "scenes\\Player.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Player.cs",
               "RelativeToolTip": "scenes\\Player.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACkAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABYAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T15:29:53.479Z",
               "EditorCaption": ""
@@ -41,9 +45,22 @@
               "RelativeDocumentMoniker": "scenes\\Barn.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
               "RelativeToolTip": "scenes\\Barn.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAADQAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAAAM8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-22T16:24:24.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Collectable.cs",
+              "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Collectable.cs",
+              "RelativeDocumentMoniker": "scenes\\Collectable.cs",
+              "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Collectable.cs",
+              "RelativeToolTip": "scenes\\Collectable.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-28T21:33:54.272Z",
               "EditorCaption": ""
             }
           ]

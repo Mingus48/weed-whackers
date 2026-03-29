@@ -15,11 +15,12 @@ public partial class Barn : Node2D
 	[Export]
 	private TileMapLayer bonusMap;
 
-	string[,] plants = new string[8, 10];
-	int[,] stage = new int[8, 10];
-	int[,] water = new int[8, 10];
-	int[,] growTime = new int[8, 10];
-	float[,] bonus = new float[8, 10];
+	private string[,] plants = new string[8, 10];
+	private int[,] stage = new int[8, 10];
+	private int[,] water = new int[8, 10];
+	private int[,] growTime = new int[8, 10];
+	private float[,] bonus = new float[8, 10];
+	private PackedScene fruit;
 	//The atlas coords at where you can find the plant
 	public Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
 		{"turnip", new Vector2I(5, 0)},
@@ -43,6 +44,7 @@ public partial class Barn : Node2D
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
+		fruit = GD.Load<PackedScene>("res://scenes/Collectable.tscn");
 		Camera2D cam = player.GetNode<Camera2D>("Camera2D");
 		cam.LimitLeft = 0;
 		cam.LimitRight = 416;
@@ -150,7 +152,7 @@ public partial class Barn : Node2D
 				}
 			}
 		}
-		GD.Print(growTime[1, 0]);
+		//GD.Print(growTime[1, 0]);
 	}
 
 	public void showBonuses(string plant, Vector2 globalCords){
@@ -198,6 +200,13 @@ public partial class Barn : Node2D
 			return -1;
 		}
 		return 0;
+	}
+
+	private void spawnFruit(string plant, Vector2 pos){
+		Collectable veggie = (Collectable)fruit.Instantiate<RigidBody2D>();
+		AddChild(veggie);
+		veggie.Position = pos;
+		veggie.setTile(plant);
 	}
 
 	private void _on_tick_timer_timeout(){

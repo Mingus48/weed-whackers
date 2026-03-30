@@ -46,10 +46,10 @@ public partial class Barn : Node2D
 	public override void _Ready(){
 		fruit = GD.Load<PackedScene>("res://scenes/Collectable.tscn");
 		Camera2D cam = player.GetNode<Camera2D>("Camera2D");
-		cam.LimitLeft = 0;
-		cam.LimitRight = 416;
-		cam.LimitTop = 0;
-		cam.LimitBottom = 272;
+		//cam.LimitLeft = 0;
+		//cam.LimitRight = 416;
+		//cam.LimitTop = 0;
+		//cam.LimitBottom = 272;
 		bonusMap.Clear();
 		for(int i = 0; i < bonus.GetLength(0); i ++){
 			for(int j = 0; j < bonus.GetLength(1); j ++){

@@ -2,8 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Barn : Node2D
-{
+public partial class Barn : Node2D{
 	[Export]
 	private CharacterBody2D player;
 	[Export]
@@ -25,7 +24,15 @@ public partial class Barn : Node2D
 	//The atlas coords at where you can find the plant
 	public Dictionary<string, Vector2I> plantIdx = new Dictionary<string, Vector2I>(){
 		{"turnip", new Vector2I(5, 0)},
-		{"tomato", new Vector2I(5, 2)}
+		{"tomato", new Vector2I(5, 2)},
+		{"melon", new Vector2I(11, 2)},
+		{"eggplant", new Vector2I(5, 3)},
+		{"lemon", new Vector2I(11, 3)},
+		{"wheat", new Vector2I(5, 5)},
+		{"strawberry", new Vector2I(5, 6)},
+		{"potato", new Vector2I(5, 7)},
+		{"orange", new Vector2I(5, 8)},
+		{"corn", new Vector2I(5, 9)}
 	};
 	//Growth time
 	//The number is the time in seconds it takes to grow * 100

@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-public partial class Collectable : RigidBody2D
-{
+public partial class Collectable : RigidBody2D{
 	[Export]
 	private AnimationPlayer anim;
 	[Export]

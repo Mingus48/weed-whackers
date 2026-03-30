@@ -1,13 +1,49 @@
 [gd_scene format=3 uid="uid://bjig82bpsu1xb"]
 
+[ext_resource type="Script" uid="uid://cw4fmk5i7pioi" path="res://scenes/NPC.cs" id="1_6xvi5"]
+[ext_resource type="Texture2D" uid="uid://dgcppgpgugft6" path="res://icon.svg" id="1_mhefn"]
+[ext_resource type="Texture2D" uid="uid://cj4ifrtwx05bg" path="res://assets/SpeechBubble1.png" id="3_jnjht"]
+[ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="4_7pv12"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t62y5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mhefn"]
 
-[node name="NPC" type="CharacterBody2D" unique_id=3546674]
+[node name="NPC" type="CharacterBody2D" unique_id=3546674 node_paths=PackedStringArray("speech", "heart", "fruit")]
+script = ExtResource("1_6xvi5")
+speech = NodePath("SpeechBubble")
+heart = NodePath("HeartBubble")
+fruit = NodePath("CropSpritesheet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=923508300]
 shape = SubResource("CapsuleShape2D_t62y5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325522085]
 sprite_frames = SubResource("SpriteFrames_mhefn")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=84772760]
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("1_mhefn")
+
+[node name="SpeechBubble" type="Sprite2D" parent="." unique_id=1250974347]
+visible = false
+position = Vector2(23, -11)
+texture = ExtResource("3_jnjht")
+hframes = 5
+vframes = 4
+
+[node name="HeartBubble" type="Sprite2D" parent="." unique_id=1348165162]
+visible = false
+position = Vector2(23, -11)
+texture = ExtResource("3_jnjht")
+hframes = 5
+vframes = 4
+frame = 9
+
+[node name="CropSpritesheet" type="Sprite2D" parent="." unique_id=347907635]
+visible = false
+position = Vector2(22.5, -16.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_7pv12")
+hframes = 12
+vframes = 10

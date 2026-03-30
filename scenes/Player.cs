@@ -1,8 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D
-{
+public partial class Player : CharacterBody2D{
 	[Export]
 	private AnimationTree animTree;
 	[Export]

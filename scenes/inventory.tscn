@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d12emclg7t8kn"]
+
+[ext_resource type="Texture2D" uid="uid://bctbo66810a0h" path="res://assets/Sample-InventorySlotsSet.png" id="1_qw0r6"]
+
+[node name="Inventory" type="Control" unique_id=2053298870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryBar" type="Sprite2D" parent="." unique_id=2048001893]
+position = Vector2(534, 567)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qw0r6")

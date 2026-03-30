@@ -383,7 +383,6 @@ transitions = ["IdleSpace", "RunSpace", SubResource("AnimationNodeStateMachineTr
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6eyey"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d3wef"]
-graph_offset = Vector2(-236, 142)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6eyey")
 nodes/TimeScale/position = Vector2(93.333336, 133.33333)
 nodes/IdleRun/node = SubResource("AnimationNodeStateMachine_bruh7")

@@ -11,6 +11,7 @@ public partial class NPC : CharacterBody2D{
 	private bool atDoor = true;
 	private string desire;
 	private Barn barnScript;
+	private string[] veggies = {"turnip", "tomato", "melon", "eggplant", "lemon", "wheat", "strawberry", "potato", "orange", "corn"};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -21,7 +22,11 @@ public partial class NPC : CharacterBody2D{
 	public override void _PhysicsProcess(double delta){
 		if(atDoor){
 			speech.Visible = true;
-			fruit.FrameCoords = barnScript.plantIdx[desire];
+			fruit.Visible = true;
+			Random rng = new Random();
+			desire = veggies[rng.Next(veggies.Length)];
+			fruit.FrameCoords = new Vector2I(barnScript.plantIdx[desire].X - 5, barnScript.plantIdx[desire].Y);
+			atDoor = false;
 		}
 	}
 }

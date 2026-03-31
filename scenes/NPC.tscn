@@ -6,9 +6,6 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mhefn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mhefn"]
-radius = 30.0
-
 [node name="NPC" type="CharacterBody2D" unique_id=3546674]
 script = ExtResource("1_mhefn")
 
@@ -17,36 +14,3 @@ shape = SubResource("CapsuleShape2D_t62y5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325522085]
 sprite_frames = SubResource("SpriteFrames_mhefn")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=369052708]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1603830473]
-shape = SubResource("CircleShape2D_mhefn")
-
-[node name="Control" type="Control" parent="." unique_id=271397558]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control" unique_id=1566840460]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1886969729]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="Control/VBoxContainer" unique_id=901780723]
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="Control/VBoxContainer" unique_id=51208374]
-layout_mode = 2
-
-[node name="Button3" type="Button" parent="Control/VBoxContainer" unique_id=626420454]
-layout_mode = 2
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -99,13 +99,6 @@ public partial class Barn : Node2D{
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
 		harvestPlant();
-		/*Current watering script(will shift to player)
-		Vector2 localPos = GetGlobalMousePosition() - tileMap.Position;
-		localPos /= 16;
-		if(localPos.X < 8 && localPos.Y < 10 && localPos.X > 0 && localPos.Y > 0){
-			water[(int)localPos.X, (int)localPos.Y] = maxWater;
-			updateWater();
-		}*/
 	}
 
 	private void harvestPlant(){

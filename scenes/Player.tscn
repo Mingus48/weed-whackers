@@ -386,6 +386,8 @@ transitions = ["IdleSpace", "RunSpace", SubResource("AnimationNodeStateMachineTr
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6eyey"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d3wef"]
+graph_offset = Vector2(-58.496258, 46.806164)
+nodes/output/position = Vector2(320, 146.66667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6eyey")
 nodes/TimeScale/position = Vector2(93.333336, 133.33333)
 nodes/IdleRun/node = SubResource("AnimationNodeStateMachine_bruh7")
@@ -947,6 +949,86 @@ tile_set = SubResource("TileSet_mdl7e")
 position = Vector2(576, 570)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_mdl7e")
+
+[node name="CropSpritesheet" type="Sprite2D" parent="CanvasLayer" unique_id=716297542]
+position = Vector2(420, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 5
+
+[node name="CropSpritesheet2" type="Sprite2D" parent="CanvasLayer" unique_id=1754471573]
+position = Vector2(463.00003, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 29
+
+[node name="CropSpritesheet3" type="Sprite2D" parent="CanvasLayer" unique_id=1419794207]
+position = Vector2(505.00003, 566)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 35
+
+[node name="CropSpritesheet4" type="Sprite2D" parent="CanvasLayer" unique_id=257551567]
+position = Vector2(547, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 41
+
+[node name="CropSpritesheet5" type="Sprite2D" parent="CanvasLayer" unique_id=1750946745]
+position = Vector2(590, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 47
+
+[node name="CropSpritesheet6" type="Sprite2D" parent="CanvasLayer" unique_id=1013312750]
+position = Vector2(632.45, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 65
+
+[node name="CropSpritesheet7" type="Sprite2D" parent="CanvasLayer" unique_id=942600244]
+position = Vector2(675.4501, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 77
+
+[node name="CropSpritesheet8" type="Sprite2D" parent="CanvasLayer" unique_id=1374290703]
+position = Vector2(717.4501, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 89
+
+[node name="CropSpritesheet9" type="Sprite2D" parent="CanvasLayer" unique_id=1768197069]
+position = Vector2(759.45, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 101
+
+[node name="CropSpritesheet10" type="Sprite2D" parent="CanvasLayer" unique_id=786541599]
+position = Vector2(802.45, 570)
+scale = Vector2(2.4312503, 2.4312499)
+texture = ExtResource("3_3li8b")
+hframes = 12
+vframes = 10
+frame = 113
 
 [node name="InventorySelect" type="Sprite2D" parent="CanvasLayer" unique_id=945571723]
 visible = false

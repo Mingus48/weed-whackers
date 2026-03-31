@@ -24,10 +24,12 @@ public partial class Player : CharacterBody2D{
 	private Vector2 firstInventPos = new Vector2(350, 570);
 	private int inventPos = 0;
 	private string[] veggies = {"turnip", "tomato", "melon", "eggplant", "lemon", "wheat", "strawberry", "potato", "orange", "corn"};
+	private int[] seeds = new int[10];
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 		barnScript = (Barn)GetParent();
+		seeds[0] = 2;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,7 +83,7 @@ public partial class Player : CharacterBody2D{
 				inventSelect.Show();
 				inventSelect.Position = firstInventPos;
 			}
-			label.Text = currentPlant + " seeds";
+			label.Text = currentPlant + " seeds: " + seeds[inventPos];
 			label.PivotOffset = new Vector2(label.Size.X/2f, 0);
 			isWatering = false;
 		}else if(!isWatering){
@@ -90,7 +92,7 @@ public partial class Player : CharacterBody2D{
 		}
 
 		//Handles planting
-		if(isFarming){
+		if(isFarming && seeds[inventPos] > 0){
 			Vector2 offset = -1 * (Position % 16);
 			offset += new Vector2(16, 16);
 			seedsLayer.Position = offset;
@@ -105,7 +107,11 @@ public partial class Player : CharacterBody2D{
 			}
 			if(Input.IsActionJustPressed("leftClick")){
 				barnScript.addSeed(currentPlant, GetGlobalMousePosition());
+				seeds[inventPos] --;
 			}
+		}else if (isFarming){
+			previousPlant = currentPlant;
+			seedsLayer.Clear();
 		}else{
 			seedsLayer.Clear();
 		}
@@ -126,7 +132,7 @@ public partial class Player : CharacterBody2D{
 				animTree.Set("parameters/TimeScale/scale", .75);
 			}else{
 				animTree.Set("parameters/IdleRun/WaterSpace/blend_position", lastAxis);
-				animTree.Set("parameters/TimeScale/scale", 1.5);
+				animTree.Set("parameters/TimeScale/scale", .75);
 			}
 		}else{
 			//Acceleration

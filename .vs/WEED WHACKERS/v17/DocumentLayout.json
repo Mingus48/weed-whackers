@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\TitleScreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:scenes\\TitleScreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,6 +13,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\barn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\barn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|solutionrelative:scenes\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C38D017-9B9B-42D4-953A-C72A30FDD51E}|Weed Whackers.csproj|c:\\users\\prahlad p\\godot\\weed-whackers\\scenes\\collectable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TitleScreen.cs",
+              "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\TitleScreen.cs",
+              "RelativeDocumentMoniker": "scenes\\TitleScreen.cs",
+              "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\TitleScreen.cs",
+              "RelativeToolTip": "scenes\\TitleScreen.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T02:18:13.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "NPC.cs",
               "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\NPC.cs",
               "RelativeDocumentMoniker": "scenes\\NPC.cs",
@@ -49,7 +66,7 @@
               "RelativeDocumentMoniker": "scenes\\Player.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Player.cs",
               "RelativeToolTip": "scenes\\Player.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAHIAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAuwFMAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T15:29:53.479Z",
               "EditorCaption": ""
@@ -62,14 +79,14 @@
               "RelativeDocumentMoniker": "scenes\\Barn.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Barn.cs",
               "RelativeToolTip": "scenes\\Barn.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGQAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-22T16:24:24.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Collectable.cs",
               "DocumentMoniker": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\Collectable.cs",
               "RelativeDocumentMoniker": "scenes\\Collectable.cs",

@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://bi0vlbweufppj"]
+[gd_scene format=3 uid="uid://64r8t84rx1an"]
 
 [ext_resource type="Texture2D" uid="uid://upm7bh5sx8ur" path="res://assets/character-pack-full_version/sprite_split/character_1/character_1_frame16x20.png" id="1_p0vlq"]
 [ext_resource type="Script" uid="uid://ln3clqr2fvbe" path="res://scenes/Player.cs" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="3_3li8b"]
+[ext_resource type="Texture2D" uid="uid://c28qw35f1w7gm" path="res://assets/character-pack-full_version/sprite_split/character_1/pixil-frame-0 (1).png" id="3_khinc"]
 [ext_resource type="Texture2D" uid="uid://bctbo66810a0h" path="res://assets/Sample-InventorySlotsSet.png" id="4_mdl7e"]
+[ext_resource type="Texture2D" uid="uid://cv7mv3du7cko7" path="res://assets/waterPitcher.png" id="5_cw2d6"]
 [ext_resource type="Texture2D" uid="uid://d3lc2tr4nl7uh" path="res://assets/inventorySelect.png" id="5_qu4a1"]
 [ext_resource type="FontFile" uid="uid://g81tr68cdkf1" path="res://assets/PixelOperator.ttf" id="6_70d11"]
 
@@ -88,35 +90,35 @@ atlas = ExtResource("1_p0vlq")
 region = Rect2(32, 60, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv3ic"]
-atlas = ExtResource("1_p0vlq")
+atlas = ExtResource("3_khinc")
 region = Rect2(64, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8lor"]
-atlas = ExtResource("1_p0vlq")
+atlas = ExtResource("3_khinc")
 region = Rect2(80, 0, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6e537"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07f3"]
+atlas = ExtResource("3_khinc")
 region = Rect2(64, 20, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p07f3"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_viqgg"]
+atlas = ExtResource("3_khinc")
 region = Rect2(80, 20, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_viqgg"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgkxt"]
+atlas = ExtResource("3_khinc")
 region = Rect2(64, 40, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fgkxt"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsi7p"]
+atlas = ExtResource("3_khinc")
 region = Rect2(80, 40, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsi7p"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jpwa"]
+atlas = ExtResource("3_khinc")
 region = Rect2(64, 60, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jpwa"]
-atlas = ExtResource("1_p0vlq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfeki"]
+atlas = ExtResource("3_khinc")
 region = Rect2(80, 60, 16, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70d11"]
@@ -246,10 +248,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6e537")
+"texture": SubResource("AtlasTexture_p07f3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p07f3")
+"texture": SubResource("AtlasTexture_viqgg")
 }],
 "loop": true,
 "name": &"waterLeft",
@@ -257,10 +259,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_viqgg")
+"texture": SubResource("AtlasTexture_fgkxt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fgkxt")
+"texture": SubResource("AtlasTexture_xsi7p")
 }],
 "loop": true,
 "name": &"waterRight",
@@ -268,10 +270,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xsi7p")
+"texture": SubResource("AtlasTexture_1jpwa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jpwa")
+"texture": SubResource("AtlasTexture_pfeki")
 }],
 "loop": true,
 "name": &"waterUp",
@@ -1029,6 +1031,10 @@ texture = ExtResource("3_3li8b")
 hframes = 12
 vframes = 10
 frame = 113
+
+[node name="WaterPitcher" type="Sprite2D" parent="CanvasLayer" unique_id=1127047271]
+position = Vector2(350, 570)
+texture = ExtResource("5_cw2d6")
 
 [node name="InventorySelect" type="Sprite2D" parent="CanvasLayer" unique_id=945571723]
 visible = false

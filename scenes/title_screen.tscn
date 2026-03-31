@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://damluch76rbek"]
+
+[ext_resource type="Texture2D" uid="uid://b8bpy1lbdxt62" path="res://assets/Art/pixelart homepage.png" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://cwpl0kd2wqxgq" path="res://scenes/TitleScreen.cs" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://d3lc2tr4nl7uh" path="res://assets/inventorySelect.png" id="1_sa3yf"]
+
+[node name="TitleScreen" type="Node2D" unique_id=1934716552 node_paths=PackedStringArray("creds", "creds2")]
+script = ExtResource("1_s4lrb")
+creds = NodePath("creds")
+creds2 = NodePath("creds2")
+
+[node name="InventorySelect" type="Sprite2D" parent="." unique_id=1397205265]
+position = Vector2(510, 352.5)
+scale = Vector2(36.3, 20.675)
+texture = ExtResource("1_sa3yf")
+
+[node name="PixelartHomepage" type="Sprite2D" parent="." unique_id=1019255062]
+position = Vector2(484.5, 320)
+scale = Vector2(0.6386719, 0.6386719)
+texture = ExtResource("1_fgkus")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=272349691]
+limit_left = 0
+limit_top = 0
+limit_right = 975
+limit_bottom = 647
+
+[node name="PixelartHomepage2" type="Sprite2D" parent="." unique_id=1518295549]
+position = Vector2(422, 335)
+scale = Vector2(0.79702973, 0.7970297)
+texture = ExtResource("1_fgkus")
+region_enabled = true
+region_rect = Rect2(458.00003, 490, 427.99997, 101.333374)
+
+[node name="Button" type="Button" parent="." unique_id=454986410]
+modulate = Color(1, 1, 1, 0)
+offset_left = 252.0
+offset_top = 297.0
+offset_right = 594.0
+offset_bottom = 380.0
+
+[node name="Button2" type="Button" parent="." unique_id=119361268]
+modulate = Color(1, 1, 1, 0)
+offset_left = 286.0
+offset_top = 441.0
+offset_right = 557.0
+offset_bottom = 501.0
+
+[node name="Button3" type="Button" parent="." unique_id=1462289891]
+modulate = Color(1, 1, 1, 0)
+offset_left = 286.0
+offset_top = 375.0
+offset_right = 566.0
+offset_bottom = 435.0
+
+[node name="creds" type="Node2D" parent="." unique_id=967530242]
+visible = false
+
+[node name="InventorySelect2" type="Sprite2D" parent="creds" unique_id=1246454512]
+position = Vector2(453, 212.5)
+scale = Vector2(16.55, 8.975)
+texture = ExtResource("1_sa3yf")
+
+[node name="InventorySelect3" type="Sprite2D" parent="creds" unique_id=1587594827]
+modulate = Color(1, 1, 1, 0.39607844)
+position = Vector2(453, 212.5)
+scale = Vector2(16.55, 8.975)
+texture = ExtResource("1_sa3yf")
+
+[node name="Label" type="Label" parent="creds" unique_id=1786350228]
+offset_left = 126.99997
+offset_top = 38.99994
+offset_right = 4141.0
+offset_bottom = 2172.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
+text = "Assets:
+https://ventilatore.itch.io/the-fantasy-tileset?download
+https://pixeljad.itch.io/villagetopdown
+https://opengameart.org/content/farming-crops-16x16
+https://gif-superretroworld.itch.io/character-pack
+https://pooklea.itch.io/emote-speech-bubble-32p
+https://bragorn.itch.io/modular-inventory-sprites
+Font:
+https://www.dafont.com/pixel-operator.font?l[]=10&l[]=1
+Sources:
+https://www.almanac.com/companion-planting-guide-vegetables
+https://gilmour.com/companion-planting-chart-guide/"
+
+[node name="creds2" type="Node2D" parent="." unique_id=1391158135]
+visible = false
+position = Vector2(0, 255)
+
+[node name="InventorySelect4" type="Sprite2D" parent="creds2" unique_id=2001816005]
+position = Vector2(431, 120.5)
+scale = Vector2(11.700002, 4.375)
+texture = ExtResource("1_sa3yf")
+
+[node name="InventorySelect5" type="Sprite2D" parent="creds2" unique_id=41357820]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(431, 120.5)
+scale = Vector2(11.700002, 4.375)
+texture = ExtResource("1_sa3yf")
+
+[node name="Label" type="Label" parent="creds2" unique_id=912898140]
+offset_left = 126.99997
+offset_top = 38.99994
+offset_right = 4141.0
+offset_bottom = 2172.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
+text = "You are a farmer, and you must farm crops
+to bring nutrition back into your village.
+By using companion-based farming, you will
+save time and maximize your yield.
+Use WASD to move, 1-0 and scroll wheel
+to choose your seeds, and F to water"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Button3" to="." method="_on_button_3_button_down"]

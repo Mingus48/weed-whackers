@@ -37,17 +37,44 @@ public partial class Barn : Node2D{
 	//Growth time
 	//The number is the time in seconds it takes to grow * 100
 	private Dictionary<string, int> growIdx = new Dictionary<string, int>(){
-		{"turnip", 1000},
-		{"tomato", 2000}
+		{"turnip", 3000},
+		{"potato", 6000},
+		{"wheat", 9000},
+		{"strawberry", 12000},
+		{"tomato", 24000},
+		{"corn", 30000},
+		{"eggplant", 36000},
+		{"melon", 48000},
+		{"lemon", 60000},
+		{"orange", 60000}
 	};
 	//For the bonus system
 	//Everything that BOOSTS(not everything that is boosted by) the key plant is listed
 	//Everything that DIMINISHES(not everything that is diminished by) the plant is listed in the -plant key
 	private Dictionary<string, List<string>> bonusIdx = new Dictionary<string, List<string>>(){
-		{"turnip", new List<string>{"tomato"}},
-		{"tomato", new List<string>{"idk"}},
-		{"-turnip", new List<string>{""}},
-		{"-tomato", new List<string>{"turnip"}}
+		// BOOSTS: Plants that help the Key grow better/faster
+		{"turnip", new List<string>{"strawberry", "tomato"}},
+		{"tomato", new List<string>{"turnip", "lemon"}}, 
+		{"melon", new List<string>{"corn", "orange"}},    // Corn provides shade for melons
+		{"eggplant", new List<string>{"potato", "tomato"}},
+		{"lemon", new List<string>{"strawberry", "tomato"}},
+		{"wheat", new List<string>{"corn", "turnip"}},
+		{"strawberry", new List<string>{"tomato", "lemon"}},
+		{"potato", new List<string>{"corn", "wheat"}},
+		{"orange", new List<string>{"melon", "eggplant"}},
+		{"corn", new List<string>{"potato", "melon"}},
+
+		// DIMINISHES: Plants that shouldn't be near the Key
+		{"-turnip", new List<string>{"corn"}},          // Heavy feeders compete
+		{"-tomato", new List<string>{"potato", "corn"}}, // Shared pests (Tomato Fruitworm/Corn Earworm)
+		{"-melon", new List<string>{"potato"}},         // Potatoes can attract aphids to melons
+		{"-eggplant", new List<string>{"strawberry"}},  // Shared susceptibility to wilt
+		{"-lemon", new List<string>{"orange"}},         // Similar trees compete for same specific nutrients
+		{"-wheat", new List<string>{"tomato"}},
+		{"-strawberry", new List<string>{"eggplant"}},
+		{"-potato", new List<string>{"tomato", "melon"}},
+		{"-orange", new List<string>{"lemon"}},
+		{"-corn", new List<string>{"tomato"}}
 	};
 
 	// Called when the node enters the scene tree for the first time.

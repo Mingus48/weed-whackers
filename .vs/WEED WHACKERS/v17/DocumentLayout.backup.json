@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "scenes\\NPC.cs",
               "ToolTip": "C:\\Users\\Prahlad P\\Godot\\weed-whackers\\scenes\\NPC.cs",
               "RelativeToolTip": "scenes\\NPC.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-30T01:39:11.51Z",
               "EditorCaption": ""
@@ -63,8 +63,7 @@
               "RelativeToolTip": "scenes\\Barn.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T16:24:24.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T16:24:24.702Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "scenes\\Collectable.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-28T21:33:54.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T21:33:54.272Z"
             }
           ]
         }

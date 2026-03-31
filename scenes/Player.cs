@@ -6,6 +6,10 @@ public partial class Player : CharacterBody2D{
 	private AnimationTree animTree;
 	[Export]
 	private TileMapLayer seedsLayer;
+	[Export]
+	private Sprite2D inventSelect;
+	[Export]
+	private Label label;
 	private int maxSpeed = 75;
 	private float acceleration = .4f;
 	private float friction = .2f;
@@ -13,9 +17,13 @@ public partial class Player : CharacterBody2D{
 	private bool isWatering;
 	private Vector2 lastAxis = new Vector2(0, 1);
 	private Barn barnScript;
-	private int mode = 0;
+	private bool isFarming = false;
 	private string currentPlant = "turnip";
+	private string previousPlant = "turnip";
 	private Vector2I lastSeedPos = Vector2I.Zero;
+	private Vector2 firstInventPos = new Vector2(350, 570);
+	private int inventPos = 0;
+	private string[] veggies = {"turnip", "tomato", "melon", "eggplant", "lemon", "wheat", "strawberry", "potato", "orange", "corn"};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -24,40 +32,86 @@ public partial class Player : CharacterBody2D{
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta){
-		if(Input.IsActionPressed("farmMode")){
-			mode = 1 - mode;
-		}
 		if(Input.IsActionJustPressed("water")){
-			GD.Print("hi");
 			if(isWatering){
 				isWatering = false;
 			}else{
 				isWatering = true;
+				isFarming = false;
 			}
 		}
 
+		//Handles Inventory
+		if(isWatering){
+			inventSelect.Position = firstInventPos;
+			if(!inventSelect.Visible){
+				inventSelect.Show();
+			}
+			label.Text = "water";
+			label.PivotOffset = new Vector2(label.Size.X/2f, 0);
+		}
+		if(Input.IsActionJustReleased("scrollUp")){
+			inventPos ++;
+			if(inventPos > 9){
+				inventPos = 0;
+			}
+			isFarming = true;
+		}
+		if(Input.IsActionJustReleased("scrollDown")){
+			inventPos --;
+			if(inventPos < 0){
+				inventPos = 9;
+			}
+			isFarming = true;
+		}
+		checkKeyPressed(0);
+		checkKeyPressed(1);
+		checkKeyPressed(2);
+		checkKeyPressed(3);
+		checkKeyPressed(4);
+		checkKeyPressed(5);
+		checkKeyPressed(6);
+		checkKeyPressed(7);
+		checkKeyPressed(8);
+		checkKeyPressed(9);
+		if(isFarming){
+			currentPlant = veggies[inventPos];
+			inventSelect.Position = new Vector2(firstInventPos.X + 70 + (inventPos * 42), firstInventPos.Y);
+			if(!inventSelect.Visible){
+				inventSelect.Show();
+				inventSelect.Position = firstInventPos;
+			}
+			label.Text = currentPlant + " seeds";
+			label.PivotOffset = new Vector2(label.Size.X/2f, 0);
+			isWatering = false;
+		}else if(!isWatering){
+			inventSelect.Hide();
+			label.Text = "";
+		}
+
 		//Handles planting
-		if(mode == 1){
+		if(isFarming){
 			Vector2 offset = -1 * (Position % 16);
 			offset += new Vector2(16, 16);
 			seedsLayer.Position = offset;
 			Vector2 mousePos = seedsLayer.ToLocal(GetGlobalMousePosition());
 			Vector2I coords = seedsLayer.LocalToMap(mousePos);
-			if(coords != lastSeedPos){
+			if(coords != lastSeedPos || currentPlant != previousPlant){
 				seedsLayer.EraseCell(lastSeedPos);
 				seedsLayer.SetCell(coords, 0, barnScript.plantIdx[currentPlant]);
 				lastSeedPos = coords;
+				previousPlant = currentPlant;
 				barnScript.showBonuses(currentPlant, GetGlobalMousePosition());
 			}
 			if(Input.IsActionJustPressed("leftClick")){
-				GD.Print("hi");
 				barnScript.addSeed(currentPlant, GetGlobalMousePosition());
 			}
+		}else{
+			seedsLayer.Clear();
 		}
 
 		if(isWatering && !isRunning){
 			barnScript.waterSpot(new Vector2(Position.X, Position.Y + 8), delta);
-			GD.Print(delta);
 		}
 
 		//Handles movement
@@ -85,5 +139,23 @@ public partial class Player : CharacterBody2D{
 			lastAxis = axisPowers;
 		}
 		MoveAndSlide();
+	}
+
+	private void checkKeyPressed(int x){
+		if(Input.IsActionJustPressed(x + "")){
+			if(x == 0){
+				x = 10;
+			}
+			if(inventPos != x - 1){
+				inventPos = x - 1;
+				isFarming = true;
+			}else{
+				isFarming = false;
+				inventPos = x - 2;
+				if(inventPos < 0){
+					inventPos += 10;
+				}
+			}
+		}
 	}
 }

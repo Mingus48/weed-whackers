@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjig82bpsu1xb"]
 
-[ext_resource type="Script" uid="uid://cw4fmk5i7pioi" path="res://scenes/NPC.cs" id="1_6xvi5"]
+[ext_resource type="Script" uid="uid://comp4d0le6rjp" path="res://scenes/NPC.gd" id="1_6xvi5"]
 [ext_resource type="Texture2D" uid="uid://bmfhow3f8ohfd" path="res://assets/character-pack-full_version/sprite_split/character_2/character_2_frame16x20.png" id="2_jnjht"]
 [ext_resource type="Texture2D" uid="uid://cj4ifrtwx05bg" path="res://assets/SpeechBubble1.png" id="3_jnjht"]
 [ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="4_7pv12"]

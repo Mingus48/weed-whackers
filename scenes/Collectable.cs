@@ -9,9 +9,10 @@ public partial class Collectable : RigidBody2D{
 	public string plant;
 	private Barn barnScript;
 	private bool trackPlayer = false;
-	private CharacterBody2D player;
+	private Player player;
 	private int speed = 100;
 	private float startingY;
+	private bool oneDance = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -28,12 +29,17 @@ public partial class Collectable : RigidBody2D{
 		if(trackPlayer){
 			LinearVelocity = ToLocal(player.Position).Normalized() * speed;
 			if((Position - player.Position).Length() < 16){
+				if(oneDance){
+					player.getMoney(plant);
+					oneDance = false;
+				}
 				anim.Play("delete");
 			}
 		}
 	}
 
 	public void setTile(string plant){
+		this.plant = plant;
 		Vector2I atlasCords = barnScript.plantIdx[plant];
 		atlasCords.X -= 5;
 		pic.SetCell(Vector2I.Zero, 0, atlasCords);
@@ -55,7 +61,7 @@ public partial class Collectable : RigidBody2D{
 	private void _on_area_2d_body_entered(Node2D body){
 		if(body.Name == "Player"){
 			trackPlayer = true;
-			player = (CharacterBody2D)body;
+			player = (Player)body;
 		}
 	}
 }

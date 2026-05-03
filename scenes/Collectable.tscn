@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ce0ddwpqdrq03"]
+[gd_scene format=3 uid="uid://cqyl5h11l88qe"]
 
-[ext_resource type="Script" uid="uid://5j2lww40s6a1" path="res://scenes/Collectable.cs" id="1_ublmx"]
+[ext_resource type="Script" uid="uid://d4b1vijw0m0ly" path="res://scenes/Collectable.gd" id="1_ublmx"]
 [ext_resource type="Texture2D" uid="uid://rsd2giu5cbe6" path="res://assets/Crop_Spritesheet.png" id="2_i7i8j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ublmx"]
@@ -155,7 +155,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i7i8j"]
 resource_name = "delete"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -175,7 +174,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

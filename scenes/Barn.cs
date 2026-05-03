@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class Barn : Node2D{
 	[Export]
-	private CharacterBody2D player;
+	private Player player;
 	[Export]
 	private Timer tickTimer;
 	[Export]
@@ -37,7 +37,8 @@ public partial class Barn : Node2D{
 	//Growth time
 	//The number is the time in seconds it takes to grow * 100
 	private Dictionary<string, int> growIdx = new Dictionary<string, int>(){
-		{"turnip", 3000},
+		//{"turnip", 3000},
+		{"turnip", 30},
 		{"potato", 6000},
 		{"wheat", 9000},
 		{"strawberry", 12000},
@@ -76,6 +77,18 @@ public partial class Barn : Node2D{
 		{"-orange", new List<string>{"lemon"}},
 		{"-corn", new List<string>{"tomato"}}
 	};
+	private Dictionary<string, int> buyIdx = new Dictionary<string, int>(){
+		{"turnip", 10},
+		{"potato", 25},
+		{"wheat", 40},
+		{"strawberry", 60},
+		{"tomato", 120},
+		{"corn", 150},
+		{"eggplant", 200},
+		{"melon", 300},
+		{"lemon", 500},
+		{"orange", 550}
+	};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -91,9 +104,6 @@ public partial class Barn : Node2D{
 				bonus[i, j] = 1;
 			}
 		}
-		addSeed("turnip", new Vector2I(15 * 16, 64));
-		addSeed("tomato", new Vector2I(16 * 16, 64));
-		addSeed("tomato", new Vector2I(16 * 16, 80));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -136,9 +146,13 @@ public partial class Barn : Node2D{
 		if(plants[cords.X, cords.Y] != null){
 			return;
 		}
+		if(player.money - buyIdx[plant] < 0){
+			return;
+		}
 		//Adds plant and grow times to the 2d array
 		plants[cords.X, cords.Y] = plant;
 		growTime[cords.X, cords.Y] = growIdx[plant];
+		player.money -= buyIdx[plant];
 		Vector2I atlasCords = plantIdx[plant];
 		//Handles bonuses
 		int boosted = 0;
@@ -319,5 +333,9 @@ public partial class Barn : Node2D{
 		}
 		updateWater();
 		updatePlants();
+	}
+
+	public void clearBonus(){
+		bonusMap.Clear();
 	}
 }

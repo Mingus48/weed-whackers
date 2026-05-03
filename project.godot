@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Weed Whackers"
 run/main_scene="uid://damluch76rbek"
-config/features=PackedStringArray("4.6", "C#", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [dotnet]
 
